@@ -12,10 +12,8 @@ const Index = () => {
         <Text style={styles.label}>{item.Label}</Text>
         <InputField
           placeholder={item.placeholder}
-          height={35}
-          width={"100%"}
-          borderWidth={0.2}
-          borderRadius={6}
+          containerStyle={{ borderWidth: 1, height: 35, alignItems: "center" }}
+          inputStyle={{ width: "90%" }}
           showIcon={item.isShow ?? false}
         />
       </>
@@ -25,6 +23,7 @@ const Index = () => {
     <SafeAreaView style={styles.Safrareview}>
       <View style={styles.mainView}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={RegisterData}
           ListHeaderComponent={Header}
           renderItem={renderItem}

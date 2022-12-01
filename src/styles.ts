@@ -21,7 +21,9 @@ export  const styles = StyleSheet.create({
     BoldText :{color:'#5625CC',fontWeight:'bold'},
   
     orMain : {flexDirection:"row",alignItems:"center",opacity:0.5},
-    Line :{borderBottomWidth:1,width:"30%",marginVertical:20,opacity:0.5}
+    Line :{borderBottomWidth:1,width:"30%",marginVertical:20,opacity:0.5},
+    containerStyleFooter:{justifyContent:"center", alignItems:'center', height:40,borderRadius:5},
+    textStyleFooter:{color:'white', fontWeight:'700'}
   
   });
   

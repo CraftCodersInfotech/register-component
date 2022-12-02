@@ -8,6 +8,8 @@ import Footer from "../src/components/footer";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { RegisterContext } from "./Context";
+import { useContext } from "react";
 
 const Index = () => {
   let schema = yup.object().shape({
@@ -28,8 +30,10 @@ const Index = () => {
         }
       ),
   });
+  const { registerUser, userData } = useContext(RegisterContext);
   const {
     control,
+    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -37,9 +41,14 @@ const Index = () => {
     resolver: yupResolver(schema),
   });
   const submit = (data) => {
-    console.log("data : ", data);
+    console.log("data : ", userData);
   };
   const renderItem = ({ item }) => {
+    const data = {
+      mobilenumber: getValues("mobilenumber"),
+      password: getValues("password"),
+    };
+    // const [res, setRes] = useState(data)
     return (
       <>
         <Text style={styles.label}>{item.Label}</Text>

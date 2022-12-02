@@ -1,4 +1,4 @@
-import { RegisterContext, useRegisterStore } from "../Context/Register-context";
+import { RegisterContext, useRegisterStore } from "./Register-context";
 import * as React from "react";
 export interface RegisterProviderProps {
   children: React.ReactNode;

@@ -8,7 +8,7 @@ import Footer from "../src/components/footer";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { RegisterContext } from "./Context";
+import { RegisterContext } from "./context";
 import { useContext } from "react";
 
 const Index = () => {

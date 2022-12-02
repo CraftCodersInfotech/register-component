@@ -10,15 +10,21 @@ export  const styles = StyleSheet.create({
     image :
     {height:100,width:"70%",alignSelf:'center'},
   
-    registerLabel :{fontSize:20,fontWeight:'bold',marginVertical:15},
+    registerLabel :{fontSize:22,fontWeight:'bold',marginVertical:15,color:'#1E3056'},
   
-    label: {marginVertical:5,fontSize:15,fontWeight:'500'},
+    label: {marginVertical:7,fontSize:13,fontWeight:'500',color:'#1E3056'},
   
     footer :{justifyContent:'center',alignItems:'center',width:"100%"},
   
-    Font :{marginTop:10,fontSize:15,padding:10},
+    Font :{marginTop:10,fontSize:13, lineHeight:18, padding:10},
   
     BoldText :{color:'#5625CC',fontWeight:'bold'},
+    containerStyleInput:{
+      borderWidth: 0.2,
+      height: 35,
+      alignItems: "center",
+      borderRadius:4,
+    },
   
     orMain : {flexDirection:"row",alignItems:"center",opacity:0.5},
     Line :{borderBottomWidth:1,width:"30%",marginVertical:20,opacity:0.5},

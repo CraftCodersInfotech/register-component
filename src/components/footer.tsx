@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import * as React from "react";
 import Button from "react-native-button";
-import { styles } from "./styles";
-import { String } from "./constant/String";
+import { styles } from "../styles";
+import { String } from "../constant/String";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

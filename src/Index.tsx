@@ -2,9 +2,9 @@ import { FlatList, Text, View, SafeAreaView } from "react-native";
 import * as React from "react";
 import InputField from "react-native-input-field";
 import { styles } from "./styles";
-import { RegisterData } from "./data";
-import Header from "./header";
-import Footer from "./footer";
+import { RegisterData } from "../src/components/data";
+import Header from "../src/components/header";
+import Footer from "../src/components/footer";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -47,11 +47,7 @@ const Index = () => {
           name={item.name}
           control={control}
           placeholder={item.placeholder}
-          containerStyle={{
-            borderWidth: 0.5,
-            height: 35,
-            alignItems: "center",
-          }}
+          containerStyle={styles.containerStyleInput}
           inputStyle={{ width: "90%" }}
           showIcon={item.isShow ?? false}
           errors={errors}

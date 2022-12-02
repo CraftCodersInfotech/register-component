@@ -3,8 +3,17 @@ import * as React from "react";
 import Button from "react-native-button";
 import { styles } from "./styles";
 import { String } from "./constant/String";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-const footer = () => {
+export type props = {
+  onPress: () => void;
+};
+
+const footer = (props: props) => {
+  const { onPress } = props;
+
   return (
     <View style={{ marginTop: 20 }}>
       <Button
@@ -13,7 +22,7 @@ const footer = () => {
         textStyle={styles.textStyleFooter}
         backgroundColor={"#5625CC"}
         activeBackgroundColor={"#7f52e9"}
-        onPress={() => {}}
+        onPress={onPress}
       />
       <View style={styles.footer}>
         <Text style={styles.Font}>

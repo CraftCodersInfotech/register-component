@@ -22,7 +22,7 @@ const Index = () => {
       .test(
         "regex",
         "Password must be min 8 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase",
-        (val) => {
+        (val: any) => {
           let regExp = new RegExp(
             "^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
           );

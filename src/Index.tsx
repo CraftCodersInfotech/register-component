@@ -2,16 +2,26 @@ import { FlatList, Text, View, SafeAreaView } from "react-native";
 import * as React from "react";
 import InputField from "react-native-input-field";
 import { styles } from "./styles";
-import { RegisterData } from "../src/components/data";
 import Header from "../src/components/header";
 import Footer from "../src/components/footer";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { RegisterContext } from "./context";
-import { useContext } from "react";
+import { KeyboardType } from "react-native";
+// import { RegisterContext } from "react-native-register/src/Context";
+// import { useContext, useState } from "react";
+interface InputData {
+  name: string;
+  Label?: string;
+  placeholder?: string;
+  inputType?: string;
+  keyboardType?: KeyboardType | undefined;
+}
+export interface IRegisterProps {
+  data: InputData[];
+}
 
-const Index = () => {
+const Index = (props: IRegisterProps) => {
   let schema = yup.object().shape({
     firstname: yup.string().required(),
     lastname: yup.string().required(),
@@ -30,7 +40,7 @@ const Index = () => {
         }
       ),
   });
-  const { registerUser, userData } = useContext(RegisterContext);
+  // const { registerUser, userData } = useContext(RegisterContext);
   const {
     control,
     getValues,
@@ -40,14 +50,10 @@ const Index = () => {
     mode: "all",
     resolver: yupResolver(schema),
   });
-  const submit = (data) => {
-    console.log("data : ", userData);
+  const submit = (data: any) => {
+    console.log("data : ", data);
   };
   const renderItem = ({ item }) => {
-    const data = {
-      mobilenumber: getValues("mobilenumber"),
-      password: getValues("password"),
-    };
     // const [res, setRes] = useState(data)
     return (
       <>
@@ -69,7 +75,7 @@ const Index = () => {
       <View style={styles.mainView}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={RegisterData}
+          data={props.data}
           ListHeaderComponent={Header}
           renderItem={renderItem}
           ListFooterComponent={() => <Footer onPress={handleSubmit(submit)} />}

@@ -5,7 +5,7 @@ import { styles } from "../styles";
 const header = () => {
   return (
     <>
-      <Image style={styles.image} source={require("../assets/image1.png")} />
+      <Image style={styles.image} source={require("../assets/CraftCoders.png")} />
 
       <Text style={styles.registerLabel}>Register</Text>
     </>

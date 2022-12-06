@@ -8,7 +8,7 @@ export  const styles = StyleSheet.create({
       flex:1,paddingHorizontal:20
     },
     image :
-    {height:100,width:"70%",alignSelf:'center'},
+    {height:'85%',width:"100%",alignSelf:'center'},
   
     registerLabel :{fontSize:22,fontWeight:'bold',marginVertical:15,color:'#1E3056'},
   

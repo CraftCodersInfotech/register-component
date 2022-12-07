@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { KeyboardType } from "react-native";
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 // import { RegisterContext } from "react-native-register/src/Context";
 // import { useContext, useState } from "react";
 interface InputData {
@@ -72,7 +73,7 @@ const Index = (props: IRegisterProps) => {
   return (
     <SafeAreaView style={styles.Safrareview}>
         <View style={styles.mainView}>
-      <ScrollView> 
+      <KeyboardAwareScrollView> 
           <Header />
           <View >
           <FlatList
@@ -84,7 +85,7 @@ const Index = (props: IRegisterProps) => {
           />
           </View>
         <Footer onPress={handleSubmit(submit)}/>
-      </ScrollView>
+      </KeyboardAwareScrollView>
           </View>
     </SafeAreaView>
   );

@@ -1,18 +1,17 @@
 import { StyleSheet } from "react-native";
-
 export  const styles = StyleSheet.create({
     Safrareview : {
-      flex:1,justifyContent:'center'
+      flex:1
     },
     mainView :{
-      flex:1,paddingHorizontal:20
+      paddingHorizontal:20,flex:1
     },
     image :
-    {height:'85%',width:"100%",alignSelf:'center'},
+    {height:'80%',width:"100%",alignSelf:'center',resizeMode:"stretch"},
   
-    registerLabel :{fontSize:22,fontWeight:'bold',marginVertical:15,color:'#1E3056'},
+    registerLabel :{fontSize:22,fontWeight:'bold',color:'#1E3056'},
   
-    label: {marginVertical:7,fontSize:13,fontWeight:'500',color:'#1E3056'},
+    label: {marginVertical:5,fontSize:13,fontWeight:'500',color:'#1E3056'},
   
     footer :{justifyContent:'center',alignItems:'center',width:"100%"},
   
@@ -32,4 +31,3 @@ export  const styles = StyleSheet.create({
     textStyleFooter:{color:'white', fontWeight:'700'}
   
   });
-  

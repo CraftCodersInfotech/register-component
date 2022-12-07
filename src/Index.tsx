@@ -1,4 +1,4 @@
-import { FlatList, Text, View, SafeAreaView } from "react-native";
+import { FlatList, Text, View, SafeAreaView, ScrollView, KeyboardAvoidingView } from "react-native";
 import * as React from "react";
 import InputField from "react-native-input-field";
 import { styles } from "./styles";
@@ -20,7 +20,6 @@ interface InputData {
 export interface IRegisterProps {
   data: InputData[];
 }
-
 const Index = (props: IRegisterProps) => {
   let schema = yup.object().shape({
     firstname: yup.string().required(),
@@ -53,7 +52,7 @@ const Index = (props: IRegisterProps) => {
   const submit = (data: any) => {
     console.log("data : ", data);
   };
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item }:any) => {
     // const [res, setRes] = useState(data)
     return (
       <>
@@ -72,17 +71,22 @@ const Index = (props: IRegisterProps) => {
   };
   return (
     <SafeAreaView style={styles.Safrareview}>
-      <View style={styles.mainView}>
-        <FlatList
+        <View style={styles.mainView}>
+      <ScrollView> 
+          <Header />
+          <View >
+          <FlatList
           showsVerticalScrollIndicator={false}
           data={props.data}
-          ListHeaderComponent={Header}
+          // ListHeaderComponent={Header}
           renderItem={renderItem}
-          ListFooterComponent={() => <Footer onPress={handleSubmit(submit)} />}
-        />
-      </View>
+          // ListFooterComponent={() => <Footer onPress={handleSubmit(submit)} />}
+          />
+          </View>
+        <Footer onPress={handleSubmit(submit)}/>
+      </ScrollView>
+          </View>
     </SafeAreaView>
   );
 };
-
 export default Index;

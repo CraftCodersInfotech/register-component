@@ -18,7 +18,6 @@
     "npm": "^9.1.3",
     "react-hook-form": "^7.40.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "yup": "^0.32.11",
-    "theme-component":"https://github.com/CraftCodersInfotech/theme-component.git"
+    "yup": "^0.32.11"
   }
 }

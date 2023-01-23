@@ -19,6 +19,6 @@
     "react-hook-form": "^7.40.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "yup": "^0.32.11",
-    "Theme-component":"https://github.com/CraftCodersInfotech/theme-component.git"
+    "theme-component":"https://github.com/CraftCodersInfotech/theme-component.git"
   }
 }

@@ -1,6 +1,6 @@
 import { FlatList, Text, View, SafeAreaView, ScrollView, KeyboardAvoidingView } from "react-native";
 import * as React from "react";
-import InputField from "react-native-input-field";
+// import InputField from "react-native-input-field";
 import { styles } from "./styles";
 import Header from "../src/components/header";
 import Footer from "../src/components/footer";
@@ -58,7 +58,7 @@ const Index = (props: IRegisterProps) => {
     return (
       <>
         <Text style={styles.label}>{item.Label}</Text>
-        <InputField
+        {/* <InputField
           name={item.name}
           control={control}
           placeholder={item.placeholder}
@@ -66,7 +66,7 @@ const Index = (props: IRegisterProps) => {
           inputStyle={{ width: "90%" }}
           showIcon={item.isShow ?? false}
           errors={errors}
-        />
+        /> */}
       </>
     );
   };

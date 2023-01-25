@@ -21,14 +21,17 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {KeyboardType} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-// import { RegisterContext } from "react-native-register/src/Context";
-// import { useContext, useState } from "react";
 interface InputData {
   name: string;
   Label?: string;
   placeholder?: string;
   inputType?: string;
   keyboardType?: KeyboardType | undefined;
+  showIcon?: boolean;
+  showLogo?: boolean;
+  image?: ImageSourcePropType;
+  showPasswordIcon?: ImageSourcePropType;
+  hidePasswordIcon?: ImageSourcePropType;
 }
 export interface IRegisterProps {
   data: InputData[];
@@ -43,6 +46,7 @@ export interface IRegisterProps {
   buttonContainer: StyleProp<ViewStyle>;
   buttonLabel: string;
   buttonLabelStyle: StyleProp<TextStyle>;
+  onButtonPress?: any;
   backgroundColor: string;
   activeBackgroundColor: string;
   belowButtonView?: React.ReactNode;
@@ -51,6 +55,11 @@ export interface IRegisterProps {
   highlightedLabel: string;
   highlightedLabelStyle: StyleProp<TextStyle>;
   highlightedLabelPress: () => void;
+  iconStyle?: StyleProp<ImageStyle>;
+  passwordIconStyle?: StyleProp<ImageStyle>;
+  placeholderTextColor?: string;
+  bounces?: boolean;
+  inputStyle?: StyleProp<ViewStyle>;
 }
 const Index = (props: IRegisterProps) => {
   const {
@@ -64,6 +73,7 @@ const Index = (props: IRegisterProps) => {
     maxLength, // add to allow user enter limited data
     buttonContainer, //Prop to style the button View
     buttonLabel, //Add text in button
+    onButtonPress,
     buttonLabelStyle, //Prop to style the text in button
     backgroundColor, //inactive color of "login" button
     activeBackgroundColor, //active color of "login" button
@@ -73,11 +83,21 @@ const Index = (props: IRegisterProps) => {
     highlightedLabel, //Add text in-place of "login"
     highlightedLabelStyle, //Prop to style the highlighted text
     highlightedLabelPress, //onPress for highlighted text
+    iconStyle,
+    passwordIconStyle,
+    placeholderTextColor,
+    bounces,
+    inputStyle,
   } = props;
   let schema = yup.object().shape({
     firstname: yup.string().required(),
-    lastname: yup.string().required(),
+    // lastname: yup.string().required(),
+    email: yup
+      .string()
+      .email('Please enter valid email')
+      .required('Email Address is Required'),
     mobilenumber: yup.string().required().min(10),
+
     password: yup
       .string()
       .required()
@@ -91,6 +111,9 @@ const Index = (props: IRegisterProps) => {
           return regExp.test(val);
         },
       ),
+    passwordConfirmation: yup
+      .string()
+      .oneOf([yup.ref('password'), null], 'Passwords must match'),
   });
   // const { registerUser, userData } = useContext(RegisterContext);
   const {
@@ -103,14 +126,30 @@ const Index = (props: IRegisterProps) => {
     resolver: yupResolver(schema),
   });
   const submit = (data: any) => {
-    console.log('data : ', data);
+    onButtonPress(data);
+    // console.log('data : ', data);
+  };
+  const data = {
+    email: getValues('email'),
+    mobilenumber: getValues('mobilenumber'),
+    password: getValues('password'),
+    passwordConfirmation: getValues('passwordConfirmation'),
+    firstname: getValues('firstname'),
   };
   const renderItem = ({item}: any) => {
     // const [res, setRes] = useState(data)
     return (
       <View>
         {ShowLabel && <Text style={inputLabelStyle}>{item.Label}</Text>}
+
         <InputField
+          passwordIconStyle={passwordIconStyle}
+          placeholderTextColor={placeholderTextColor}
+          iconStyle={iconStyle}
+          showLogo={item.showLogo}
+          source={item.image}
+          showPasswordIcon={item.showPasswordIcon}
+          hidePasswordIcon={item.hidePasswordIcon}
           showIcon={item.showIcon}
           name={item.name}
           control={control}
@@ -118,10 +157,7 @@ const Index = (props: IRegisterProps) => {
           placeholder={item.placeholder}
           maxLength={maxLength}
           keyboardType={item.keyboardType}
-          inputStyle={{
-            width: item.showIcon ? '90%' : '100%',
-            // backgroundColor: 'red',
-          }}
+          inputStyle={inputStyle}
           errors={errors}
         />
       </View>
